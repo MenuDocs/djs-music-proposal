@@ -47,7 +47,7 @@ bot.on('message', async (msg) => {
 });
 
 async function playCommand(args, msg) {
-    const [song] = await getSongs('https://www.youtube.com/watch?v=nRu6AgOFvqo', lavalink);
+    const [song] = await getSongs('https://www.youtube.com/watch?v=nRu6AgOFvqo');
 
     if (!song) {
         return msg.reply('No songs found. try again!');
