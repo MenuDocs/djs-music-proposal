@@ -5,7 +5,7 @@ const bot = new Client({
 });
 const { PlayerManager } = require('discord.js-lavalink');
 const config = require('./config');
-const { getSongs } = require('./helpers');
+const { getSongs, decodeTrack } = require('./helpers');
 const channelId = '566131860913127424';
 
 bot.once('ready', () => {
@@ -43,6 +43,21 @@ bot.on('message', async (msg) => {
 
         // Paused is not updated so we have to invert it here
         return msg.reply(`${!player.paused ? 'Resumed' : 'Paused'} the music`);
+    }
+
+    if (command === 'np') {
+        const player = lavalink.get(msg.guild.id);
+        if (!player) {
+            return msg.reply('No lavalink player found');
+        }
+
+        if (!player.playing) {
+            return msg.reply('The player is not playing anything');
+        }
+
+        const track = await decodeTrack(player.track);
+
+        return msg.reply(`Now playing: **${track.title}**\nLink: <${track.uri}>`);
     }
 });
 
