@@ -45,6 +45,21 @@ bot.on('message', async (msg) => {
         return msg.reply(`${!player.paused ? 'Resumed' : 'Paused'} the music`);
     }
 
+    if (command === 'volume') {
+        const player = lavalink.get(msg.guild.id);
+        if (!player) {
+            return msg.reply('No lavalink player found');
+        }
+
+        if (!player.playing) {
+            return msg.reply('The player is not playing anything');
+        }
+
+        await player.volume(Number(args[0]));
+
+        return msg.reply(`Volume has been set to **${args[0]}**`);
+    }
+
     if (command === 'np') {
         const player = lavalink.get(msg.guild.id);
         if (!player) {
