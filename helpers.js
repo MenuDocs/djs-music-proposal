@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-async function getSongs(identifier) {
+const getSongs = async (identifier) => {
     const node = lavalink.nodes.first(); // lavalink is a global variable
 
     const {data} = await axios.get(`http://${node.host}:${node.port}/loadtracks`, {
@@ -15,7 +15,7 @@ async function getSongs(identifier) {
     return data.tracks;
 }
 
-async function decodeTrack(track) {
+const decodeTrack = async (track) => {
     const node = lavalink.nodes.first(); // lavalink is a global variable
 
     const {data} = await axios.get(`http://${node.host}:${node.port}/decodetrack`, {
