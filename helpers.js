@@ -5,7 +5,7 @@ const getSongs = async (identifier) => {
 
     const {data} = await axios.get(`http://${node.host}:${node.port}/loadtracks`, {
         params: {
-            identifier,
+            identifier
         },
         headers: {
             Authorization: node.password
@@ -20,7 +20,7 @@ const decodeTrack = async (track) => {
 
     const {data} = await axios.get(`http://${node.host}:${node.port}/decodetrack`, {
         params: {
-            track,
+            track
         },
         headers: {
             Authorization: node.password
