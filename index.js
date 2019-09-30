@@ -1,8 +1,5 @@
 const { Client } = require('discord.js');
-const bot = new Client({
-    fetchAllMembers: false,
-    disableEveryone: true,
-});
+const bot = new Client({ disableEveryone: true });
 const { PlayerManager } = require('discord.js-lavalink');
 const config = require('./config');
 const { getSongs, decodeTrack } = require('./helpers');
