@@ -9,11 +9,11 @@ const getSongs = async (identifier) => {
         },
         headers: {
             Authorization: node.password
-        },
+        }
     });
 
     return data.tracks;
-}
+};
 
 const decodeTrack = async (track) => {
     const node = lavalink.nodes.first(); // lavalink is a global variable
@@ -24,11 +24,11 @@ const decodeTrack = async (track) => {
         },
         headers: {
             Authorization: node.password
-        },
+        }
     });
 
     return data;
-}
+};
 
 module.exports = {
     getSongs,
